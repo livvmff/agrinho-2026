@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMundo: O Último Refúgio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="screen-menu" class="screen active">
+        <h1 class="game-title">EcoMundo</h1>
+        <h2 class="game-subtitle">O Último Refúgio</h2>
+        
+        <div class="globe-container">
+            <div class="pulsing-globe">🌍</div>
+        </div>
+
+        <div class="menu-status-preview">
+            <div class="preview-item">🌳 Planeta</div>
+            <div class="preview-item">💰 Orçamento</div>
+            <div class="preview-item">😊 Felicidade</div>
+            <div class="preview-item">⚡ Energia</div>
+        </div>
+
+        <button class="btn-main" onclick="startGame()">Iniciar Missão</button>
+    </div>
+
+    <div id="screen-game" class="screen">
+        <div class="status-bar">
+            <div id="status-planeta" class="status-item">🌳 Planeta: <span id="val-planeta">50</span>%</div>
+            <div id="status-orcamento" class="status-item">💰 Orçamento: $<span id="val-orcamento">50</span>k</div>
+            <div id="status-felicidade" class="status-item">😊 Felicidade: <span id="val-felicidade">50</span>%</div>
+            <div id="status-energia" class="status-item">⚡ Energia: <span id="val-energia">50</span>%</div>
+        </div>
+
+        <div id="cidade-cenario" class="cidade-poluida">
+            <div id="nuvens-fumaca" class="fumaca">☁️💨🏭</div>
+            <div id="elementos-verdes" class="elementos-verdes hidden">🌳🌻💨⚙️</div>
+            <div id="sol" class="sol hidden">☀️</div>
+        </div>
+
+        <div class="card-container">
+            <div id="decision-card" class="card">
+                <h3 id="card-title">Dilema Ambiental</h3>
+                <p id="card-desc">Carregando situação...</p>
+                <div class="card-buttons">
+                    <button id="btn-opt1" class="btn-choice" onclick="makeChoice(1)">Opção A</button>
+                    <button id="btn-opt2" class="btn-choice" onclick="makeChoice(2)">Opção B</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pop-fact" class="popup hidden">
+        <div class="popup-content">
+            <h3>📢 Você Sabia?</h3>
+            <p id="fact-text">Fato educativo aqui...</p>
+            <button class="btn-main" onclick="closeFact()">Continuar</button>
+        </div>
+    </div>
+
+    <div id="screen-mini-reciclagem" class="screen">
+        <h2>♻️ Mini-Jogo: Hora da Reciclagem</h2>
+        <p>Arraste ou clique no botão certo para classificar o item!</p>
+        <div class="timer">Tempo: <span id="reciclagem-tempo">15</span>s</div>
+        
+        <div id="item-reciclavel" class="item-foco">🍾 Vidro</div>
+
+        <div class="lixeiras-container">
+            <button class="btn-lixeira lix-plastico" onclick="checkReciclagem('plastico')">Plástico</button>
+            <button class="btn-lixeira lix-papel" onclick="checkReciclagem('papel')">Papel</button>
+            <button class="btn-lixeira lix-vidro" onclick="checkReciclagem('vidro')">Vidro</button>
+            <button class="btn-lixeira lix-metal" onclick="checkReciclagem('metal')">Metal</button>
+        </div>
+    </div>
+
+    <div id="screen-mini-desperdicio" class="screen">
+        <h2>🔍 Detetive do Desperdício</h2>
+        <p>Clique rápido nos focos de desperdício para eliminá-los!</p>
+        <div class="timer">Tempo: <span id="desperdicio-tempo">15</span>s</div>
+
+        <div class="casa-virtual">
+            <div id="item-torneira" class="foco-desperdicio" onclick="corrigirDesperdicio('torneira')">🚰 Torneira Pingando</div>
+            <div id="item-lampada" class="foco-desperdicio" onclick="corrigirDesperdicio('lampada')">💡 Luz Acesa de Dia</div>
+            <div id="item-tv" class="foco-desperdicio" onclick="corrigirDesperdicio('tv')">📺 TV Ligada Vazia</div>
+        </div>
+    </div>
+
+    <div id="screen-ranking" class="screen">
+        <h2>🏆 Ranking Global</h2>
+        <div class="ranking-list">
+            <div class="ranking-item">1. EcoMaster99 - 980 pts</div>
+            <div class="ranking-item">2. GreenHero - 850 pts</div>
+            <div id="player-rank" class="ranking-item jogador-destaque">3. Você (Sua Pontuação) - <span id="final-score">0</span> pts</div>
+            <div class="ranking-item">4. GaiaCidadao - 610 pts</div>
+            <div class="ranking-item">5. ReciclaPró - 420 pts</div>
+        </div>
+        <button class="btn-main" onclick="resetToMenu()">Voltar ao Menu</button>
+    </div>
+
+    <div id="screen-gameover" class="screen">
+        <h1 id="end-title">Fim de Jogo</h1>
+        <p id="end-desc">Estatísticas finais...</p>
+        <button class="btn-main" onclick="verRanking()">Ver Ranking Global</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
